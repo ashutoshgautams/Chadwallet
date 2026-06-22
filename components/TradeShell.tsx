@@ -35,7 +35,7 @@ export function TradeShell({
             ["trade", "Trade"],
             ["list", "Markets"],
           ] as const).map(([k, label]) => (
-            <button
+            <button type="button"
               key={k}
               onClick={() => setTab(k)}
               className={`flex-1 rounded-pill py-2 text-sm font-semibold transition-colors ${

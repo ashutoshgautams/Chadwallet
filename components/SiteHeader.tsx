@@ -12,7 +12,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
       }`}
     >
       <Link href="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-80">
-        <ChadMark className="h-7 w-7 text-green" />
+        <ChadMark className="h-7 w-7 text-ink" />
         <span className="font-display text-lg font-bold tracking-tight">
           ChadWallet
         </span>

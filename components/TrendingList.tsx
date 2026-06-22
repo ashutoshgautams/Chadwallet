@@ -94,7 +94,7 @@ export function TrendingList({
               href={`/trade/${t.mint}`}
               className={`flex items-center justify-between px-4 py-3 transition-colors last:border-0 ${
                 active
-                  ? "bg-green/8"
+                  ? "bg-green/10"
                   : "hover:bg-surface-2"
               }`}
             >

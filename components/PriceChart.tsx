@@ -56,7 +56,7 @@ export function PriceChart({
       {/* Timeframe tabs */}
       <div className="mb-4 flex items-center gap-1">
         {TIMEFRAMES.map((t) => (
-          <button
+          <button type="button"
             key={t}
             onClick={() => setTf(t)}
             className={`rounded-lg px-3 py-1 font-mono text-xs font-semibold transition-colors ${

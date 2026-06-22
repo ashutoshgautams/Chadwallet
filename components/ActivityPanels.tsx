@@ -40,7 +40,7 @@ export function ActivityPanels({
     <div className="rounded-2xl border border-hairline bg-surface">
       <div className="flex border-b border-hairline">
         {(["trades", "holders"] as const).map((t) => (
-          <button
+          <button type="button"
             key={t}
             onClick={() => setTab(t)}
             className={`flex-1 py-3 text-xs font-semibold capitalize transition-colors ${
