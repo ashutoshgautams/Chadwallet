@@ -60,7 +60,7 @@ export function TradePanel({ token }: { token: Token }) {
       {/* Buy / Sell toggle */}
       <div className="mb-4 flex gap-1.5 rounded-pill bg-bg p-1">
         {(["buy", "sell"] as const).map((s) => (
-          <button
+          <button type="button"
             key={s}
             onClick={() => {
               setSide(s);
@@ -94,7 +94,7 @@ export function TradePanel({ token }: { token: Token }) {
       {/* Presets */}
       <div className="mt-2 grid grid-cols-3 gap-2">
         {(side === "buy" ? PRESETS : SELL_PRESETS).map((p) => (
-          <button
+          <button type="button"
             key={p}
             onClick={() => setAmount(String(p))}
             className="tnum rounded-lg border border-hairline bg-bg py-1.5 text-xs text-muted transition-colors hover:border-green/40 hover:text-ink"
@@ -144,7 +144,7 @@ export function TradePanel({ token }: { token: Token }) {
           </p>
         </div>
       ) : (
-        <button
+        <button type="button"
           onClick={onReview}
           disabled={!quote || loading}
           className={`mt-4 w-full rounded-pill py-3.5 text-sm font-semibold transition-transform active:scale-[0.98] disabled:opacity-40 ${

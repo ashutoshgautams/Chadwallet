@@ -10,7 +10,7 @@ function isMint(s: unknown): s is string {
 }
 
 export async function POST(req: Request) {
-  let body: any;
+  let body: { side?: unknown; mint?: unknown; amount?: unknown };
   try {
     body = await req.json();
   } catch {

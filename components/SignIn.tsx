@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { useAuth } from "./AuthProvider";
-import { shortAddr } from "@/lib/format";
 
 export function SignIn() {
   const { ready, authenticated, email, login, logout } = useAuth();
@@ -15,6 +15,7 @@ export function SignIn() {
   if (authenticated) {
     return (
       <button
+        type="button"
         onClick={logout}
         className="flex items-center gap-2 rounded-pill border border-hairline bg-surface px-3 py-2 text-sm font-medium text-ink transition-colors hover:border-green/40"
       >
@@ -27,52 +28,75 @@ export function SignIn() {
   return (
     <>
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="rounded-pill bg-green px-5 py-2 text-sm font-semibold text-bg transition-colors hover:bg-green-press"
       >
         Sign in
       </button>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-50 grid place-items-center bg-black/70 p-6"
-          onClick={() => setOpen(false)}
-        >
+      {open &&
+        createPortal(
+          /* Rendered into document.body — escapes sticky header's stacking context */
           <div
-            className="w-full max-w-sm rounded-3xl border border-hairline bg-surface p-6"
-            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="signin-title"
+            className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
+            onClick={() => setOpen(false)}
           >
-            <h2 className="font-display text-xl font-bold">Sign in to trade</h2>
-            <p className="mt-1 text-sm text-muted">
-              Your wallet is created for you. You own your crypto — it stays
-              yours.
-            </p>
-            <div className="mt-5 flex flex-col gap-2.5">
+            <div
+              className="relative w-full max-w-sm rounded-3xl border border-hairline bg-surface p-7 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
               <button
-                onClick={() => {
-                  login();
-                  setOpen(false);
-                }}
-                className="flex items-center justify-center gap-2 rounded-pill bg-ink px-4 py-3 text-sm font-semibold text-bg transition-transform active:scale-[0.98]"
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close sign in dialog"
+                className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full text-faint transition-colors hover:bg-surface-2 hover:text-ink"
               >
-                <AppleGlyph /> Continue with Apple
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+                  <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
               </button>
-              <button
-                onClick={() => {
-                  login();
-                  setOpen(false);
-                }}
-                className="flex items-center justify-center gap-2 rounded-pill border border-hairline bg-surface-2 px-4 py-3 text-sm font-semibold text-ink transition-transform active:scale-[0.98]"
-              >
-                <GoogleGlyph /> Continue with Google
-              </button>
+
+              {/* Header */}
+              <h2 id="signin-title" className="font-display text-xl font-bold">
+                Sign in to trade
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Your wallet is created for you instantly. You own your
+                crypto — it stays yours.
+              </p>
+
+              {/* Auth buttons */}
+              <div className="mt-6 flex flex-col gap-3">
+                <button
+                  type="button"
+                  onClick={() => { login(); setOpen(false); }}
+                  className="flex items-center justify-center gap-2.5 rounded-pill bg-ink px-4 py-3.5 text-sm font-semibold text-bg transition-transform hover:scale-[1.01] active:scale-[0.98]"
+                >
+                  <AppleGlyph />
+                  Continue with Apple
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { login(); setOpen(false); }}
+                  className="flex items-center justify-center gap-2.5 rounded-pill border border-hairline bg-surface-2 px-4 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.01] active:scale-[0.98]"
+                >
+                  <GoogleGlyph />
+                  Continue with Google
+                </button>
+              </div>
+
+              <p className="mt-5 text-center text-[11px] text-faint">
+                Secured by Privy · self-custodial · no seed phrase
+              </p>
             </div>
-            <p className="mt-4 text-center text-[11px] text-faint">
-              Secured by Privy · self-custodial
-            </p>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
