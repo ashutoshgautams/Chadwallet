@@ -1,6 +1,6 @@
 # ChadWallet — Web
 
-The landing page (required) and trading terminal (bonus) for ChadWallet, the #1 meme coin trading app on Solana.
+The landing page and trading terminal for ChadWallet, the #1 meme coin trading app on Solana.
 
 Built with Next.js (App Router) + TypeScript + Tailwind. Powered by real data from BirdEye and Jupiter, with sign-in through Privy. Runs out of the box with realistic preview data, and switches to live markets the moment you add API keys.
 
@@ -13,7 +13,6 @@ npm install
 npm run dev          # http://localhost:3000
 ```
 
-That's it — the app renders immediately with preview data. No keys required to see it working.
 
 ### Turn on live data (all free tiers)
 
@@ -29,17 +28,6 @@ npm run dev
 | `NEXT_PUBLIC_PRIVY_APP_ID` | Privy | Apple/Google sign-in, embedded wallet | dashboard.privy.io |
 | `ALCHEMY_RPC_URL` | Alchemy | balances + tx simulation | alchemy.com |
 | — | Jupiter | swap quotes | no key needed |
-
----
-
-## Deploy to Vercel
-
-1. Push this folder to a GitHub repo.
-2. Import it at vercel.com → New Project.
-3. (Optional) add the env vars from `.env.example` under Settings → Environment Variables.
-4. Deploy. The build fetches fonts and builds the App Router automatically.
-
-No env vars? It still deploys and looks complete — preview data fills every screen.
 
 ---
 
@@ -91,4 +79,3 @@ npm run build    # production build
 npm run start    # serve the production build
 npm run lint     # eslint
 ```
-# Chadwallet
