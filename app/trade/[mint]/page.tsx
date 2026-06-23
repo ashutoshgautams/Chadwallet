@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import { TokenBanner } from "@/components/TokenBanner";
 import { TradeShell } from "@/components/TradeShell";
 import { TrendingList } from "@/components/TrendingList";
@@ -68,6 +69,7 @@ export default async function TradePage({
           right={<TradePanel token={token.data} />}
         />
       </div>
+      <SiteFooter />
     </main>
   );
 }
