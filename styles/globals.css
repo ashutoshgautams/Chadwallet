@@ -105,6 +105,22 @@ body {
   animation-delay: 0.24s;
 }
 
+/* ─── Orbital ring animation ─────────────────────────────────────────────── */
+/* The outer "planet system" container spins; avatar initials counter-spin
+   at the same rate so they stay upright as they orbit. */
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-counter {
+  to { transform: rotate(-360deg); }
+}
+
+/* ─── Hero aurora pulse ──────────────────────────────────────────────────── */
+@keyframes aurora-shift {
+  0%, 100% { opacity: 0.18; transform: scale(1) translateY(0px); }
+  50% { opacity: 0.28; transform: scale(1.05) translateY(-12px); }
+}
+
 /* Underline hover for nav and footer links. */
 .hover-underline {
   position: relative;

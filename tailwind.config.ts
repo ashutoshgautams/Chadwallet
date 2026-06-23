@@ -89,6 +89,14 @@ const config: Config = {
           "0%": { transform: "translateY(0%)" },
           "100%": { transform: "translateY(100%)" },
         },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "spin-slow-reverse": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(-360deg)" },
+        },
       },
       animation: {
         marquee: "marquee var(--marquee-duration, 40s) linear infinite",
@@ -99,6 +107,8 @@ const config: Config = {
         "slide-in-left": "slide-in-left 0.5s cubic-bezier(0.16,1,0.3,1) both",
         "slide-up": "slide-up 0.5s cubic-bezier(0.16,1,0.3,1) both",
         scan: "scan 3s linear infinite",
+        "spin-slow": "spin-slow 45s linear infinite",
+        "spin-slow-reverse": "spin-slow-reverse 30s linear infinite",
       },
     },
   },
