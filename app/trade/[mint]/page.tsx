@@ -42,12 +42,7 @@ export default async function TradePage({
       <TokenBanner tokens={trending.data} speed={46} />
 
       <div className="mx-auto max-w-7xl px-4 py-5">
-        {isDemo && (
-          <div className="mb-4 inline-flex items-center gap-1.5 rounded-pill border border-hairline bg-surface px-3 py-1 font-mono text-[11px] text-faint">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue" />
-            preview data · add BirdEye + Jupiter keys for live markets
-          </div>
-        )}
+        
 
         <TradeShell
           left={
